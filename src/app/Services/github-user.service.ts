@@ -28,7 +28,8 @@ export class GithubUserService {
           company: result['company'],
           location: result['location'],
           followed: result['following'],
-          followers: result['followers']
+          followers: result['followers'],
+          public_repos: result['public_repos']
         };
         return user;
       })

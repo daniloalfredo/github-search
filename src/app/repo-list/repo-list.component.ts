@@ -19,7 +19,7 @@ export class RepoListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.Sub = this.User$.subscribe(user => 
     {
-      this.getRepos(user[0].login);
+      this.getRepos(user.login);
     });
   }
 

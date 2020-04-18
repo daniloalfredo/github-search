@@ -31,6 +31,7 @@ export class GitActions {
         payload: payload as UserDetails
     })
 
+    @dispatch()
     get_repos = (meta: Metadata): GitAction => ({
         type: GitActions.GET_REPOS,
         meta: meta,

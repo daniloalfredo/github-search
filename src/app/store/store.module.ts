@@ -11,6 +11,7 @@ import { RootEpic } from '../store/roots';
 import { gitReducer } from '../Services/reducer';
 import { createEpicMiddleware } from 'redux-observable';
 import { GitEpics } from '../Services/epics';
+import { GitActions } from '../Services/actions';
 
 @NgModule({
   declarations: [],
@@ -22,6 +23,7 @@ import { GitEpics } from '../Services/epics';
   providers: [
     RootEpic,
     GitEpics,
+    GitActions
   ],
 })
 export class StoreModule {
