@@ -1,0 +1,18 @@
+<div class="main-content">
+  <div *ngFor="let repo of repos$ | async">
+    <div class="row">
+      <span class="repo-name">{{repo.name}}</span>
+    </div>
+    <div class="row">
+      <span class="repo-desc">{{repo.description}}</span>
+    </div>
+    <div class="row repo-stars">
+      <div class="col-md-1" style="max-width: 24px;">
+        <img src="assets/icons/staricon.png" class=".star-icon">
+      </div>
+      <div class="col-md-11" style="">
+        <p class="repo-desc">{{repo.stargazers_count}}</p>
+      </div>
+    </div>
+  </div>
+</div>

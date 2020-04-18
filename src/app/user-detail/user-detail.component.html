@@ -1,0 +1,87 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-4">
+      <p class="githubSearch">Github <span class="text-style-1">Search</span></p>
+    </div>
+    <div class="col-md-8">
+      <div class="row search">
+        <div class="col-md-10 column">
+          <mat-form-field class="searchbar">
+            <input class="search-text" matInput [formControl]="userForm">
+          </mat-form-field>
+        </div>
+        <div class="col-md-2 column">
+          <button type="button" class="searchbutton" (click)="search()">
+            <img src="assets/icons/search-icon.png"
+              srcset="assets/icons/search-icon@2x.png, assets/icons/search-icon@3x.png" class="search-icon">
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="User$ | async as User">
+    <div class="row" style="margin-top: 53px" *ngIf="User.hasOwnProperty('id'); else notFound">
+      <div class="col-md-4 col-6">
+        <div class="row">
+          <img src="{{User.avatar_url}}" class="user-avatar">
+        </div>
+        <div class="row">
+          <span class="user-name">{{User.name}}</span>
+        </div>
+        <div class="row">
+          <span class="user-details-text" style="margin-left: 15%;">{{User.login}}</span>
+        </div>
+        <div class="row user-details">
+          <div class="col-md-1">
+            <img src="assets/icons/organizationicon.png" class=".user-detail-icons">
+          </div>
+          <div class="col-md-10">
+            <p class="user-details-text">{{User.company}}</p>
+          </div>
+        </div>
+        <div class="row user-details">
+          <div class="col-md-1">
+            <img src="assets/icons/locationicon.png" class=".user-detail-icons">
+          </div>
+          <div class="col-md-10">
+            <p class="user-details-text">{{User.location}}</p>
+          </div>
+        </div>
+        <div class="row user-details">
+          <div class="col-md-1">
+            <img src="assets/icons/staricon.png" class=".user-detail-icons">
+          </div>
+          <div class="col-md-10">
+            <p class="user-details-text">{{User.following}}</p>
+          </div>
+        </div>
+        <div class="row user-details">
+          <div class="col-md-1">
+            <img src="assets/icons/repositoriesicon.png" class=".user-detail-icons">
+          </div>
+          <div class="col-md-10">
+            <p class="user-details-text">{{User.public_repos}}</p>
+          </div>
+        </div>
+        <div class="row user-details">
+          <div class="col-md-1">
+            <img src="assets/icons/followersicon.png" class=".user-detail-icons">
+          </div>
+          <div class="col-md-10">
+            <p class="user-details-text">{{User.followers}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8 col-6">
+        <app-repo-list [User$]="User$"></app-repo-list>
+      </div>
+    </div>
+    <ng-template #notFound>
+      <div class="row justify-content-center">
+        <span class="not-found">User not found :(</span>
+      </div>
+    </ng-template>
+  </div>
+</div>

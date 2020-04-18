@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+<div class="container h-100">
+  <div class="row h-100 align-items-center">
+    <div class="col-12">
+      <p class="GithubSearch">Github <span class="text-style-1">Search</span></p>
+      <div class="row search">
+        <div class="col-md-10 col-5 column">
+          <mat-form-field class="searchbar">
+            <input class="search-text" matInput [formControl]="username">
+          </mat-form-field>
+        </div>
+        <div class="col-md-2 col-1 column">
+          <button type="button" class="searchbutton" (click)="search()">
+            <img src="assets/icons/search-icon.png" srcset="assets/icons/search-icon@2x.png, assets/icons/search-icon@3x.png" class="search-icon">
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

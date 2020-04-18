@@ -1,0 +1,22 @@
+@import '../../styles.scss';
+
+.repo-name
+{
+    font-family: Raleway;
+    font-size: 35px;
+    font-weight: normal;
+    color: $light-purple;
+}
+
+.repo-desc
+{
+    font-family: Raleway;
+    font-size: 20px;
+    font-weight: 300;
+    color: black;
+}
+
+.repo-stars
+{
+    margin-bottom: 30px;
+}

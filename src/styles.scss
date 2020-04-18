@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+//global colors
+$light-purple: #ac53f2;
+$dark-gray: #5c5c5c;
+$snow-white: #ffffff;
+$blackest-night: black; 
+
+.shadow
+{
+    box-shadow: 0 0 4px NaNpx rgba(0, 0, 0, 0.4);
+}
+
+body, html
+{
+    height: 100%;
+}
+
+@font-face{
+    font-family: "Monaco";
+    src: url("src/assets/fonts/monaco.ttf");
+}
