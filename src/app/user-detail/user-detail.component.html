@@ -21,8 +21,8 @@
       </div>
     </div>
   </div>
-  <div *ngIf="User$ | async as User">
-    <div class="row" style="margin-top: 53px" *ngIf="User.hasOwnProperty('id'); else notFound">
+  <div *ngIf="user$ | async as User">
+    <div class="row" style="margin-top: 53px" *ngIf="User.hasOwnProperty('name'); else notFound">
       <div class="col-md-4 col-6">
         <div class="row">
           <img src="{{User.avatar_url}}" class="user-avatar">

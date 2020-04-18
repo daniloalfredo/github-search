@@ -1,6 +1,9 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import { GithubUserService } from '../github-user.service';
+import { GithubUserService } from '../Services/github-user.service';
 import { Subscription, Observable } from 'rxjs';
+import { UserDetails, Repo } from '../Interfaces';
+import { select } from '@angular-redux/store';
+import { GitActions } from '../Services/actions';
 
 @Component({
   selector: 'app-repo-list',
@@ -8,11 +11,10 @@ import { Subscription, Observable } from 'rxjs';
   styleUrls: ['./repo-list.component.scss']
 })
 export class RepoListComponent implements OnInit, OnDestroy {
-
-  @Input() User$: Observable<any>;
-  repos$: Observable<any>;
+  @select(['UserRepos']) readonly repos$: Observable<Repo[]>;
+  @Input() User$: Observable<UserDetails>;
   Sub: Subscription;
-  constructor(private gitService: GithubUserService) { }
+  constructor(private actions: GitActions) { }
 
   ngOnInit() {
     this.Sub = this.User$.subscribe(user => 
@@ -28,7 +30,7 @@ export class RepoListComponent implements OnInit, OnDestroy {
 
   getRepos(username: string)
   {
-    this.repos$ = this.gitService.getRepos(username);
+    this.actions.get_repos({username: username});
   }
 
 }

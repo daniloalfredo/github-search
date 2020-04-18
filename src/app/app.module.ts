@@ -9,6 +9,7 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { RepoListComponent } from './repo-list/repo-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NgReduxModule } from '@angular-redux/store';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     AppRoutingModule,
     MatButtonModule,
+    NgReduxModule,
     MatIconModule,
     MatInputModule,
     ReactiveFormsModule,
