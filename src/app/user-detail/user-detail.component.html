@@ -21,8 +21,8 @@
       </div>
     </div>
   </div>
-  <div *ngIf="user$ | async as User">
-    <div class="row" style="margin-top: 53px" *ngIf="User.hasOwnProperty('name'); else notFound">
+  <div *ngIf="user$ | async as User; else notFound">
+    <div class="row" style="margin-top: 53px">
       <div class="col-md-4 col-6">
         <div class="row">
           <img src="{{User.avatar}}" class="user-avatar">
@@ -78,10 +78,10 @@
         <app-repo-list [User$]="user$"></app-repo-list>
       </div>
     </div>
-    <ng-template #notFound>
-      <div class="row justify-content-center">
-        <span class="not-found">User not found :(</span>
-      </div>
-    </ng-template>
   </div>
+  <ng-template #notFound>
+    <div class="row justify-content-center">
+      <span class="not-found">User not found :(</span>
+    </div>
+  </ng-template>
 </div>
