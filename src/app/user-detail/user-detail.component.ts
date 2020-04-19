@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { FormControl, Validators } from '@angular/forms';
-import { switchMap } from 'rxjs/operators';
 import { GitActions } from '../Services/actions';
 import { select } from '@angular-redux/store';
 import { UserDetails } from '../Interfaces';
