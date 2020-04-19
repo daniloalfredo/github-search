@@ -80,7 +80,7 @@
     </div>
   </div>
   <ng-template #notFound>
-    <div class="row justify-content-center">
+    <div *ngIf="err$ | async" class="row justify-content-center">
       <span class="not-found">User not found :(</span>
     </div>
   </ng-template>

@@ -13,6 +13,7 @@ import { UserDetails } from '../Interfaces';
 })
 export class UserDetailComponent implements OnInit {
   @select(['userDetails']) readonly user$: Observable<UserDetails>;
+  @select(['error']) readonly err$: Observable<boolean>;
   userForm = new FormControl('', Validators.required);
   username: string;
   constructor(private actions: GitActions, private route: ActivatedRoute, private router: Router) { }

@@ -54,6 +54,15 @@ export class GithubUserService {
               stargazers_count: repo.stargazers_count
             };
             return repository;
+          }).sort(function (a, b) {
+            if (a.stargazers_count === b.stargazers_count)
+            {
+              return 0;
+            }
+            else
+            {
+              return a.stargazers_count < b.stargazers_count ? 1 : -1;
+            }
           });
           return repositories;
         }

@@ -4,7 +4,8 @@ import { AppState, UserDetails, Repo } from 'src/app/Interfaces';
 
 const INITIAL_STATE: AppState = {
     userDetails: null,
-    UserRepos: []
+    UserRepos: [],
+    error: false
 };
 
 export function gitReducer(state: AppState = INITIAL_STATE, a: Action): AppState {
@@ -15,10 +16,22 @@ export function gitReducer(state: AppState = INITIAL_STATE, a: Action): AppState
             return state;
 
         case GitActions.GET_USER_DATA_RETURN:
-            return {
-                ...state,
-                userDetails: action.payload as UserDetails
-            };
+            if (action.payload != null)
+            {
+                return {
+                    ...state,
+                    error: false,
+                    userDetails: action.payload as UserDetails
+                };
+            }
+            else
+            {
+                return {
+                    ...state,
+                    error: true,
+                    userDetails: action.payload as UserDetails
+                }
+            }
 
         case GitActions.GET_REPOS:
             return state;

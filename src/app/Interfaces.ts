@@ -19,5 +19,6 @@ export interface Repo
 export interface AppState
 {
     userDetails?: UserDetails;
+    error?: boolean;
     UserRepos?: Repo[];
 }
