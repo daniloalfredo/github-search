@@ -1,10 +1,11 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 
 import { RepoListComponent } from './repo-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GitActions } from '../Services/actions';
-import { UserDetails } from '../Interfaces';
+import { UserDetails, Repo, AppState } from '../Interfaces';
 import { of } from 'rxjs';
+import { NgReduxTestingModule, MockNgRedux } from '@angular-redux/store/testing';
 
 describe('RepoListComponent', () => {
   let component: RepoListComponent;
@@ -15,6 +16,7 @@ describe('RepoListComponent', () => {
       declarations: [ RepoListComponent ],
       imports: [
         BrowserAnimationsModule,
+        NgReduxTestingModule
       ],
       providers: [
         GitActions
@@ -26,6 +28,7 @@ describe('RepoListComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(RepoListComponent);
     component = fixture.componentInstance;
+    MockNgRedux.reset();
     const userInput: UserDetails = {
       login: 'daniloalfredo',
       avatar: 'https://avatars0.githubusercontent.com/u/3910681?v=4',
@@ -43,4 +46,27 @@ describe('RepoListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render repo list from observable', fakeAsync(() => {
+    const mockRepos: Repo[] = [
+      {
+        "name": "Advance-Wars",
+        "description": "Projeto IP 2012.2",
+        "stargazers_count": 0,
+      }
+    ];
+    const selectorStub = MockNgRedux.getSelectorStub<AppState, Repo[]>('UserRepos');
+    selectorStub.next([]);
+    selectorStub.next(mockRepos);
+    selectorStub.complete();
+    selectorStub.subscribe((result: Repo[]) => {
+      if (result.length > 0)
+      {
+        expect(result).toEqual(mockRepos);
+        fixture.detectChanges();
+        const nameEl = fixture.nativeElement.querySelector('.repo-name');
+        expect(nameEl.textContent).toContain(result[0].name);
+      }
+    })
+  }))
 });
