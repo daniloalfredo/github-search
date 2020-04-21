@@ -6,6 +6,9 @@
     font-size: 35px;
     font-weight: normal;
     color: $light-purple;
+    @media screen and (max-width: 576px) {
+        font-size: 20px;
+    }
 }
 
 .repo-desc
@@ -14,6 +17,18 @@
     font-size: 20px;
     font-weight: 300;
     color: black;
+    @media screen and (max-width: 576px) {
+        font-size: 12px;
+    }
+}
+
+.repo-star
+{
+    margin-left: -1%;
+    @media screen and (max-width: 576px) {
+        margin-left: -6%;
+        margin-top: 5%;
+    }
 }
 
 .repo-stars

@@ -3,14 +3,14 @@
 <div class="container h-100">
   <div class="row h-100 align-items-center">
     <div class="col-12">
-      <p class="GithubSearch">Github <span class="text-style-1">Search</span></p>
+      <h1 class="GithubSearch">Github <span class="text-style-1">Search</span></h1>
       <div class="row search">
-        <div class="col-md-10 column">
+        <div class="col-9 col-md-10 column">
           <mat-form-field class="searchbar">
             <input class="search-text" matInput [formControl]="username">
           </mat-form-field>
         </div>
-        <div class="col-md-2 column">
+        <div class="col-3 col-md-2 column">
           <button type="button" class="searchbutton" (click)="search()">
             <img src="assets/icons/search-icon.png" srcset="assets/icons/search-icon@2x.png, assets/icons/search-icon@3x.png" class="search-icon">
           </button>
